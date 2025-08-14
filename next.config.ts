@@ -2,8 +2,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  eslint: { ignoreDuringBuilds: true },      // ✅ don't fail the build on ESLint
-  typescript: { ignoreBuildErrors: true },   // ✅ optional: skip TS errors in prod build
+  eslint: { ignoreDuringBuilds: true },      // don't fail build on ESLint
+  typescript: { ignoreBuildErrors: true },   // (optional) don't fail on TS
 };
 
 export default nextConfig;
