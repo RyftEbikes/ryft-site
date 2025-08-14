@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import ActionBar from '../components/ActionBar';
+import { useLanguage } from '../contexts/LanguageContext';
 import { 
   GlobeAltIcon,
   CheckIcon,
@@ -20,7 +21,9 @@ interface Language {
 
 export default function LanguagesPage() {
   const [darkMode, setDarkMode] = useState(false);
-  const [selectedLanguage, setSelectedLanguage] = useState('en');
+  const { currentLanguage, setLanguage, t } = useLanguage();
+  const [selectedLanguage, setSelectedLanguage] = useState(currentLanguage);
+  const [isApplying, setIsApplying] = useState(false);
 
   const languages: Language[] = [
     {
@@ -111,15 +114,13 @@ export default function LanguagesPage() {
 
   const handleLanguageSelect = (languageCode: string) => {
     setSelectedLanguage(languageCode);
-    // Here you would typically implement actual language switching logic
-    // For now, we'll just update the state
   };
 
   const applyLanguage = () => {
-    // Here you would implement the actual language application logic
-    // For now, we'll just show an alert
-    const selectedLang = languages.find(lang => lang.code === selectedLanguage);
-    alert(`Language changed to ${selectedLang?.name}. This would typically reload the page with the new language.`);
+    if (selectedLanguage !== currentLanguage) {
+      setIsApplying(true);
+      setLanguage(selectedLanguage);
+    }
   };
 
   return (
@@ -140,10 +141,10 @@ export default function LanguagesPage() {
             <GlobeAltIcon className="w-10 h-10 text-white" />
           </div>
           <h1 className={`text-4xl md:text-5xl font-bold mb-4 ${darkMode ? 'text-white' : 'text-black'}`}>
-            Choose Your Language
+            {t('languages.title')}
           </h1>
           <p className={`text-xl ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-            Select your preferred language to view the Ryft website
+            {t('languages.subtitle')}
           </p>
         </motion.div>
 
@@ -225,7 +226,7 @@ export default function LanguagesPage() {
             } shadow-lg hover:shadow-xl`}
           >
             <LanguageIcon className="w-6 h-6" />
-            <span>Apply Language</span>
+            <span>{t('languages.apply')}</span>
             <ArrowRightIcon className="w-5 h-5" />
           </button>
         </motion.div>

@@ -171,13 +171,13 @@ export default function ProfilePage() {
       setUserProfile({
         name: 'Demo User',
         email: loginForm.email,
-        phone: '+1 (555) 123-4567',
+    phone: '+1 (555) 123-4567',
         address: '123 Demo Street, Demo City, DC 12345',
         password: loginForm.password,
-        avatar: '/gallery1.jpg',
+    avatar: '/gallery1.jpg',
         memberSince: 'January 2024',
         totalOrders: 2,
-        totalSpent: 32000
+    totalSpent: 32000
       });
       setHasProfile(true);
       setShowLogin(false);
@@ -525,60 +525,60 @@ export default function ProfilePage() {
     }
 
     return (
-      <div className="space-y-8">
-        {/* Profile Header */}
-        <div className={`p-8 rounded-2xl ${darkMode ? 'bg-gray-800' : 'bg-white'} shadow-xl`}>
-          <div className="flex items-center space-x-6">
-            <div className="relative">
-              <div className="w-24 h-24 rounded-full overflow-hidden">
-                <img 
-                  src={userProfile.avatar} 
-                  alt="Profile" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <button className={`absolute bottom-0 right-0 p-2 rounded-full ${
-                darkMode ? 'bg-blue-600 hover:bg-blue-700' : 'bg-blue-500 hover:bg-blue-600'
-              } text-white transition-colors`}>
-                <CameraIcon className="w-4 h-4" />
-              </button>
+    <div className="space-y-8">
+      {/* Profile Header */}
+      <div className={`p-8 rounded-2xl ${darkMode ? 'bg-gray-800' : 'bg-white'} shadow-xl`}>
+        <div className="flex items-center space-x-6">
+          <div className="relative">
+            <div className="w-24 h-24 rounded-full overflow-hidden">
+              <img 
+                src={userProfile.avatar} 
+                alt="Profile" 
+                className="w-full h-full object-cover"
+              />
             </div>
-            <div className="flex-1">
-              <h2 className={`text-2xl font-bold mb-2 ${darkMode ? 'text-white' : 'text-black'}`}>
+            <button className={`absolute bottom-0 right-0 p-2 rounded-full ${
+              darkMode ? 'bg-blue-600 hover:bg-blue-700' : 'bg-blue-500 hover:bg-blue-600'
+            } text-white transition-colors`}>
+              <CameraIcon className="w-4 h-4" />
+            </button>
+          </div>
+          <div className="flex-1">
+            <h2 className={`text-2xl font-bold mb-2 ${darkMode ? 'text-white' : 'text-black'}`}>
                 {userProfile.name || 'Your Name'}
-              </h2>
-              <p className={`text-lg ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-                Member since {userProfile.memberSince}
-              </p>
-              <div className="flex items-center space-x-6 mt-4">
-                <div className="text-center">
-                  <div className={`text-2xl font-bold ${darkMode ? 'text-white' : 'text-black'}`}>
-                    {userProfile.totalOrders}
-                  </div>
-                  <div className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
-                    Orders
-                  </div>
+            </h2>
+            <p className={`text-lg ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+              Member since {userProfile.memberSince}
+            </p>
+            <div className="flex items-center space-x-6 mt-4">
+              <div className="text-center">
+                <div className={`text-2xl font-bold ${darkMode ? 'text-white' : 'text-black'}`}>
+                  {userProfile.totalOrders}
                 </div>
-                <div className="text-center">
-                  <div className={`text-2xl font-bold ${darkMode ? 'text-white' : 'text-black'}`}>
-                    ${userProfile.totalSpent.toLocaleString()}
-                  </div>
-                  <div className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
-                    Total Spent
-                  </div>
+                <div className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
+                  Orders
+                </div>
+              </div>
+              <div className="text-center">
+                <div className={`text-2xl font-bold ${darkMode ? 'text-white' : 'text-black'}`}>
+                  ${userProfile.totalSpent.toLocaleString()}
+                </div>
+                <div className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
+                  Total Spent
                 </div>
               </div>
             </div>
+          </div>
             <div className="flex space-x-3">
-              <button
+          <button
                 onClick={handleStartEditing}
-                className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-colors ${
-                  darkMode 
-                    ? 'bg-gray-700 text-white hover:bg-gray-600' 
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                }`}
-              >
-                <PencilIcon className="w-4 h-4" />
+            className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-colors ${
+              darkMode 
+                ? 'bg-gray-700 text-white hover:bg-gray-600' 
+                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+            }`}
+          >
+            <PencilIcon className="w-4 h-4" />
                 <span>Edit Profile</span>
               </button>
               <button
@@ -591,16 +591,16 @@ export default function ProfilePage() {
               >
                 <ArrowRightIcon className="w-4 h-4" />
                 <span>Logout</span>
-              </button>
+          </button>
             </div>
-          </div>
         </div>
+      </div>
 
-        {/* Contact Information */}
-        <div className={`p-8 rounded-2xl ${darkMode ? 'bg-gray-800' : 'bg-white'} shadow-xl`}>
-          <h3 className={`text-xl font-bold mb-6 ${darkMode ? 'text-white' : 'text-black'}`}>
-            Contact Information
-          </h3>
+      {/* Contact Information */}
+      <div className={`p-8 rounded-2xl ${darkMode ? 'bg-gray-800' : 'bg-white'} shadow-xl`}>
+        <h3 className={`text-xl font-bold mb-6 ${darkMode ? 'text-white' : 'text-black'}`}>
+          Contact Information
+        </h3>
           
           {isEditing ? (
             <div className="space-y-6">
@@ -734,29 +734,29 @@ export default function ProfilePage() {
               </div>
             </div>
           ) : (
-            <div className="space-y-4">
-              <div className="flex items-center space-x-4">
-                <EnvelopeIcon className={`w-5 h-5 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`} />
-                <div className="flex-1">
-                  <div className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>Email</div>
+        <div className="space-y-4">
+          <div className="flex items-center space-x-4">
+            <EnvelopeIcon className={`w-5 h-5 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`} />
+            <div className="flex-1">
+              <div className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>Email</div>
                   <div className={`${darkMode ? 'text-white' : 'text-black'}`}>
                     {userProfile.email || 'Not set'}
                   </div>
-                </div>
-              </div>
-              <div className="flex items-center space-x-4">
-                <PhoneIcon className={`w-5 h-5 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`} />
-                <div className="flex-1">
-                  <div className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>Phone</div>
+            </div>
+          </div>
+          <div className="flex items-center space-x-4">
+            <PhoneIcon className={`w-5 h-5 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`} />
+            <div className="flex-1">
+              <div className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>Phone</div>
                   <div className={`${darkMode ? 'text-white' : 'text-black'}`}>
                     {userProfile.phone || 'Not set'}
                   </div>
-                </div>
-              </div>
-              <div className="flex items-center space-x-4">
-                <MapPinIcon className={`w-5 h-5 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`} />
-                <div className="flex-1">
-                  <div className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>Address</div>
+            </div>
+          </div>
+          <div className="flex items-center space-x-4">
+            <MapPinIcon className={`w-5 h-5 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`} />
+            <div className="flex-1">
+              <div className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>Address</div>
                   <div className={`${darkMode ? 'text-white' : 'text-black'}`}>
                     {userProfile.address || 'Not set'}
                   </div>
@@ -768,10 +768,10 @@ export default function ProfilePage() {
                   <div className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>Password</div>
                   <div className={`${darkMode ? 'text-white' : 'text-black'}`}>
                     {userProfile.password ? '••••••••' : 'Not set'}
-                  </div>
-                </div>
-              </div>
             </div>
+          </div>
+        </div>
+      </div>
           )}
         </div>
       </div>
@@ -799,15 +799,15 @@ export default function ProfilePage() {
           >
             Create Profile
           </button>
-        </div>
-      );
+    </div>
+  );
     }
 
          return (
-       <div className="space-y-6">
-         <h3 className={`text-xl font-bold mb-6 ${darkMode ? 'text-white' : 'text-black'}`}>
-           Recent Orders
-         </h3>
+    <div className="space-y-6">
+      <h3 className={`text-xl font-bold mb-6 ${darkMode ? 'text-white' : 'text-black'}`}>
+        Recent Orders
+      </h3>
          <div className={`p-8 rounded-2xl ${darkMode ? 'bg-gray-800' : 'bg-white'} shadow-xl text-center`}>
            <TruckIcon className={`w-16 h-16 mx-auto mb-4 ${darkMode ? 'text-gray-400' : 'text-gray-300'}`} />
            <h3 className={`text-xl font-bold mb-2 ${darkMode ? 'text-white' : 'text-black'}`}>
@@ -826,8 +826,8 @@ export default function ProfilePage() {
            >
              Start Shopping
            </a>
-         </div>
-       </div>
+            </div>
+          </div>
      );
   };
 
@@ -851,32 +851,32 @@ export default function ProfilePage() {
             }`}
           >
             Create Profile
-          </button>
-        </div>
-      );
+            </button>
+    </div>
+  );
     }
 
     return (
-      <div className={`p-8 rounded-2xl ${darkMode ? 'bg-gray-800' : 'bg-white'} shadow-xl text-center`}>
-        <HeartIcon className={`w-16 h-16 mx-auto mb-4 ${darkMode ? 'text-gray-400' : 'text-gray-300'}`} />
-        <h3 className={`text-xl font-bold mb-2 ${darkMode ? 'text-white' : 'text-black'}`}>
-          Your Wishlist is Empty
-        </h3>
-        <p className={`mb-6 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-          Start adding products to your wishlist to save them for later.
-        </p>
-        <a
+    <div className={`p-8 rounded-2xl ${darkMode ? 'bg-gray-800' : 'bg-white'} shadow-xl text-center`}>
+      <HeartIcon className={`w-16 h-16 mx-auto mb-4 ${darkMode ? 'text-gray-400' : 'text-gray-300'}`} />
+      <h3 className={`text-xl font-bold mb-2 ${darkMode ? 'text-white' : 'text-black'}`}>
+        Your Wishlist is Empty
+      </h3>
+      <p className={`mb-6 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+        Start adding products to your wishlist to save them for later.
+      </p>
+      <a
           href="/configurator"
-          className={`inline-flex items-center px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
-            darkMode 
-              ? 'bg-blue-600 text-white hover:bg-blue-700' 
+        className={`inline-flex items-center px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
+          darkMode 
+            ? 'bg-blue-600 text-white hover:bg-blue-700' 
               : 'bg-blue-600 text-white hover:bg-blue-700'
-          }`}
-        >
-          Browse Products
-        </a>
-      </div>
-    );
+        }`}
+      >
+        Browse Products
+      </a>
+    </div>
+  );
   };
 
   const renderSettingsTab = () => {
@@ -905,63 +905,63 @@ export default function ProfilePage() {
     }
 
     return (
-      <div className="space-y-6">
-        <div className={`p-6 rounded-2xl ${darkMode ? 'bg-gray-800' : 'bg-white'} shadow-xl`}>
-          <h3 className={`text-lg font-semibold mb-4 ${darkMode ? 'text-white' : 'text-black'}`}>
-            Notifications
-          </h3>
-          <div className="space-y-4">
-            <div className="flex items-center justify-between">
-              <div>
-                <div className={`font-medium ${darkMode ? 'text-white' : 'text-black'}`}>Order Updates</div>
-                <div className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
-                  Get notified about your order status
-                </div>
+    <div className="space-y-6">
+      <div className={`p-6 rounded-2xl ${darkMode ? 'bg-gray-800' : 'bg-white'} shadow-xl`}>
+        <h3 className={`text-lg font-semibold mb-4 ${darkMode ? 'text-white' : 'text-black'}`}>
+          Notifications
+        </h3>
+        <div className="space-y-4">
+          <div className="flex items-center justify-between">
+            <div>
+              <div className={`font-medium ${darkMode ? 'text-white' : 'text-black'}`}>Order Updates</div>
+              <div className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
+                Get notified about your order status
               </div>
-              <button className={`w-12 h-6 rounded-full transition-colors ${
-                darkMode ? 'bg-blue-600' : 'bg-blue-500'
-              }`}>
-                <div className="w-4 h-4 bg-white rounded-full ml-1 mt-1"></div>
-              </button>
             </div>
-            <div className="flex items-center justify-between">
-              <div>
-                <div className={`font-medium ${darkMode ? 'text-white' : 'text-black'}`}>Product Updates</div>
-                <div className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
-                  Receive updates about new products
-                </div>
-              </div>
-              <button className={`w-12 h-6 rounded-full transition-colors ${
-                darkMode ? 'bg-gray-600' : 'bg-gray-300'
-              }`}>
-                <div className="w-4 h-4 bg-white rounded-full ml-1 mt-1"></div>
-              </button>
-            </div>
+            <button className={`w-12 h-6 rounded-full transition-colors ${
+              darkMode ? 'bg-blue-600' : 'bg-blue-500'
+            }`}>
+              <div className="w-4 h-4 bg-white rounded-full ml-1 mt-1"></div>
+            </button>
           </div>
-        </div>
-
-        <div className={`p-6 rounded-2xl ${darkMode ? 'bg-gray-800' : 'bg-white'} shadow-xl`}>
-          <h3 className={`text-lg font-semibold mb-4 ${darkMode ? 'text-white' : 'text-black'}`}>
-            Preferences
-          </h3>
-          <div className="space-y-4">
-            <div className="flex items-center justify-between">
-              <div>
-                <div className={`font-medium ${darkMode ? 'text-white' : 'text-black'}`}>Dark Mode</div>
-                <div className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
-                  Use dark theme
-                </div>
+          <div className="flex items-center justify-between">
+            <div>
+              <div className={`font-medium ${darkMode ? 'text-white' : 'text-black'}`}>Product Updates</div>
+              <div className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
+                Receive updates about new products
               </div>
-              <button className={`w-12 h-6 rounded-full transition-colors ${
-                darkMode ? 'bg-blue-600' : 'bg-blue-500'
-              }`}>
-                <div className="w-4 h-4 bg-white rounded-full ml-1 mt-1"></div>
-              </button>
             </div>
+            <button className={`w-12 h-6 rounded-full transition-colors ${
+              darkMode ? 'bg-gray-600' : 'bg-gray-300'
+            }`}>
+              <div className="w-4 h-4 bg-white rounded-full ml-1 mt-1"></div>
+            </button>
           </div>
         </div>
       </div>
-    );
+
+      <div className={`p-6 rounded-2xl ${darkMode ? 'bg-gray-800' : 'bg-white'} shadow-xl`}>
+        <h3 className={`text-lg font-semibold mb-4 ${darkMode ? 'text-white' : 'text-black'}`}>
+          Preferences
+        </h3>
+        <div className="space-y-4">
+          <div className="flex items-center justify-between">
+            <div>
+              <div className={`font-medium ${darkMode ? 'text-white' : 'text-black'}`}>Dark Mode</div>
+              <div className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
+                Use dark theme
+              </div>
+            </div>
+            <button className={`w-12 h-6 rounded-full transition-colors ${
+              darkMode ? 'bg-blue-600' : 'bg-blue-500'
+            }`}>
+              <div className="w-4 h-4 bg-white rounded-full ml-1 mt-1"></div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
   };
 
   const renderSecurityTab = () => {
@@ -990,49 +990,49 @@ export default function ProfilePage() {
     }
 
     return (
-      <div className="space-y-6">
-        <div className={`p-6 rounded-2xl ${darkMode ? 'bg-gray-800' : 'bg-white'} shadow-xl`}>
-          <h3 className={`text-lg font-semibold mb-4 ${darkMode ? 'text-white' : 'text-black'}`}>
-            Security Settings
-          </h3>
-          <div className="space-y-4">
-            <button className={`w-full flex items-center justify-between p-4 rounded-lg transition-colors ${
-              darkMode 
-                ? 'bg-gray-700 text-white hover:bg-gray-600' 
-                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-            }`}>
-              <div className="flex items-center space-x-3">
-                <KeyIcon className="w-5 h-5" />
-                <span>Change Password</span>
-              </div>
-              <ArrowRightIcon className="w-4 h-4" />
-            </button>
-            <button className={`w-full flex items-center justify-between p-4 rounded-lg transition-colors ${
-              darkMode 
-                ? 'bg-gray-700 text-white hover:bg-gray-600' 
-                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-            }`}>
-              <div className="flex items-center space-x-3">
-                <CreditCardIcon className="w-5 h-5" />
-                <span>Payment Methods</span>
-              </div>
-              <ArrowRightIcon className="w-4 h-4" />
-            </button>
-            <button className={`w-full flex items-center justify-between p-4 rounded-lg transition-colors ${
-              darkMode 
-                ? 'bg-gray-700 text-white hover:bg-gray-600' 
-                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-            }`}>
-              <div className="flex items-center space-x-3">
-                <DocumentTextIcon className="w-5 h-5" />
-                <span>Privacy Policy</span>
-              </div>
-              <ArrowRightIcon className="w-4 h-4" />
-            </button>
-          </div>
+    <div className="space-y-6">
+      <div className={`p-6 rounded-2xl ${darkMode ? 'bg-gray-800' : 'bg-white'} shadow-xl`}>
+        <h3 className={`text-lg font-semibold mb-4 ${darkMode ? 'text-white' : 'text-black'}`}>
+          Security Settings
+        </h3>
+        <div className="space-y-4">
+          <button className={`w-full flex items-center justify-between p-4 rounded-lg transition-colors ${
+            darkMode 
+              ? 'bg-gray-700 text-white hover:bg-gray-600' 
+              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+          }`}>
+            <div className="flex items-center space-x-3">
+              <KeyIcon className="w-5 h-5" />
+              <span>Change Password</span>
+            </div>
+            <ArrowRightIcon className="w-4 h-4" />
+          </button>
+          <button className={`w-full flex items-center justify-between p-4 rounded-lg transition-colors ${
+            darkMode 
+              ? 'bg-gray-700 text-white hover:bg-gray-600' 
+              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+          }`}>
+            <div className="flex items-center space-x-3">
+              <CreditCardIcon className="w-5 h-5" />
+              <span>Payment Methods</span>
+            </div>
+            <ArrowRightIcon className="w-4 h-4" />
+          </button>
+          <button className={`w-full flex items-center justify-between p-4 rounded-lg transition-colors ${
+            darkMode 
+              ? 'bg-gray-700 text-white hover:bg-gray-600' 
+              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+          }`}>
+            <div className="flex items-center space-x-3">
+              <DocumentTextIcon className="w-5 h-5" />
+              <span>Privacy Policy</span>
+            </div>
+            <ArrowRightIcon className="w-4 h-4" />
+          </button>
         </div>
       </div>
-    );
+    </div>
+  );
   };
 
   const renderTabContent = () => {

@@ -2,6 +2,7 @@ import './globals.css'
 import { Sora } from 'next/font/google'
 import Navbar from './components/navbar'
 import { CartProvider } from './contexts/CartContext'
+import { LanguageProvider } from './contexts/LanguageContext'
 
 const sora = Sora({
   subsets: ['latin'],
@@ -22,8 +23,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={sora.className}>
         <CartProvider>
-          <Navbar />
-          {children}
+          <LanguageProvider>
+            <Navbar />
+            {children}
+          </LanguageProvider>
         </CartProvider>
       </body>
     </html>
