@@ -20,7 +20,7 @@ interface Language {
 }
 
 export default function LanguagesPage() {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
   const { currentLanguage, setLanguage, t } = useLanguage();
   const [selectedLanguage, setSelectedLanguage] = useState(currentLanguage);
   const [isApplying, setIsApplying] = useState(false);

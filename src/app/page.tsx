@@ -1,10 +1,12 @@
 'use client';
 
 import { useState } from 'react';
+import { useLanguage } from './contexts/LanguageContext';
 import ActionBar from './components/ActionBar';
 
 export default function Home() {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
+  const { t } = useLanguage();
 
   return (
     <main className={darkMode ? 'dark' : ''}>
@@ -23,33 +25,33 @@ export default function Home() {
         />
         <div className="relative z-10 flex flex-col items-center justify-center h-full px-6 text-center">
           <h1 className={`text-6xl md:text-8xl font-bold tracking-tight ${darkMode ? 'text-white' : 'text-black'}`}>RYFT</h1>
-          <p className={`mt-4 text-xl md:text-2xl ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>Move Different. Ride the Shift.</p>
-          <a href="#features" className={`mt-8 px-6 py-3 font-semibold rounded hover:bg-gray-200 transition ${darkMode ? 'bg-white text-black' : 'bg-black text-white hover:bg-gray-800'}`}>Explore</a>
+                     <p className={`mt-4 text-xl md:text-2xl ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>{t('home.moveDifferent')}</p>
+           <a href="#features" className={`mt-8 px-6 py-3 font-semibold rounded hover:bg-gray-200 transition ${darkMode ? 'bg-white text-black' : 'bg-black text-white hover:bg-gray-800'}`}>{t('home.explore')}</a>
         </div>
       </section>
 
       {/* Features Section */}
       <section id="features" className={`py-20 px-6 md:px-20 ${darkMode ? 'bg-gray-900 text-white' : 'bg-white text-black'}`}>
-        <h2 className={`text-4xl font-bold text-center mb-12 ${darkMode ? 'text-white' : 'text-black'}`}>Performance That Leads</h2>
+                 <h2 className={`text-4xl font-bold text-center mb-12 ${darkMode ? 'text-white' : 'text-black'}`}>{t('home.performanceLeads')}</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
           <div>
-            <h3 className="text-xl font-semibold">🔋 75 Mile Range</h3>
-            <p className={`mt-2 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>Go further with our next-gen battery tech.</p>
-          </div>
-          <div>
-            <h3 className="text-xl font-semibold">⚡ 80Nm Torque</h3>
-            <p className={`mt-2 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>Instant power delivery with smooth control.</p>
-          </div>
-          <div>
-            <h3 className="text-xl font-semibold">📱 App Control</h3>
-            <p className={`mt-2 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>Track rides, lock remotely, monitor performance.</p>
+                         <h3 className="text-xl font-semibold">🔋 {t('home.range75')}</h3>
+             <p className={`mt-2 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>{t('home.rangeSubtitle')}</p>
+           </div>
+           <div>
+             <h3 className="text-xl font-semibold">⚡ {t('home.torque80')}</h3>
+             <p className={`mt-2 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>{t('home.torqueSubtitle')}</p>
+           </div>
+           <div>
+             <h3 className="text-xl font-semibold">📱 {t('home.appControl')}</h3>
+             <p className={`mt-2 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>{t('home.appSubtitle')}</p>
           </div>
         </div>
       </section>
 
       {/* Gallery Preview */}
       <section className={`py-20 px-6 md:px-20 ${darkMode ? 'bg-black text-white' : 'bg-gray-100 text-black'}`}>
-        <h2 className={`text-4xl font-bold text-center mb-12 ${darkMode ? 'text-white' : 'text-black'}`}>Gallery</h2>
+                 <h2 className={`text-4xl font-bold text-center mb-12 ${darkMode ? 'text-white' : 'text-black'}`}>{t('home.gallery')}</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <img src="/gallery1.jpg" alt="Ryft bike 1" className="rounded shadow-lg" />
           <img src="/gallery2.jpg" alt="Ryft bike 2" className="rounded shadow-lg" />
@@ -59,7 +61,7 @@ export default function Home() {
 
       {/* Our Mission */}
       <section className={`py-20 px-6 md:px-20 text-center ${darkMode ? 'bg-gray-900 text-white' : 'bg-white text-black'}`}>
-        <h2 className={`text-4xl font-bold mb-12 ${darkMode ? 'text-white' : 'text-black'}`}>Our Mission</h2>
+                 <h2 className={`text-4xl font-bold mb-12 ${darkMode ? 'text-white' : 'text-black'}`}>{t('home.ourMission')}</h2>
         <div className="space-y-12">
           <div className="text-center mb-12">
             <div className="relative inline-block mb-6">
@@ -67,39 +69,38 @@ export default function Home() {
                 <span className="text-2xl">🚀</span>
               </div>
             </div>
-            <h3 className={`text-3xl md:text-4xl font-bold mb-6 ${darkMode ? 'text-white' : 'text-black'}`}>
-              Pioneering the Future
-            </h3>
+                           <h3 className={`text-3xl md:text-4xl font-bold mb-6 ${darkMode ? 'text-white' : 'text-black'}`}>
+                 {t('home.pioneeringFuture')}
+               </h3>
           </div>
 
           <div className="max-w-4xl mx-auto">
             <div className={`p-8 rounded-2xl border shadow-xl ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-gray-100 border-gray-200'}`}>
-              <p className={`text-xl md:text-2xl leading-relaxed mb-8 text-center ${darkMode ? 'text-gray-300' : 'text-gray-800'}`}>
-                Ryft is pioneering the future of electric performance. Our mission is to deliver zero-compromise power, 
-                precision, and purity — allowing every rider to defy terrain, redefine adventure, and embrace electric dominance.
-              </p>
+                             <p className={`text-xl md:text-2xl leading-relaxed mb-8 text-center ${darkMode ? 'text-gray-300' : 'text-gray-800'}`}>
+                 {t('home.missionText')}
+               </p>
               
               <div className="grid md:grid-cols-3 gap-6 mt-8">
                 <div className={`text-center p-6 rounded-xl border shadow-md ${darkMode ? 'bg-gray-700 border-gray-600' : 'bg-white border-gray-200'}`}>
                   <div className="mb-3 flex justify-center">
                     <span className="text-3xl">⚡</span>
                   </div>
-                  <h4 className={`text-lg font-bold mb-2 ${darkMode ? 'text-white' : 'text-black'}`}>Power</h4>
-                  <p className={`text-sm ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>Uncompromising electric performance that exceeds traditional combustion</p>
-                </div>
-                <div className={`text-center p-6 rounded-xl border shadow-md ${darkMode ? 'bg-gray-700 border-gray-600' : 'bg-white border-gray-200'}`}>
-                  <div className="mb-3 flex justify-center">
-                    <span className="text-3xl">🎯</span>
-                  </div>
-                  <h4 className={`text-lg font-bold mb-2 ${darkMode ? 'text-white' : 'text-black'}`}>Precision</h4>
-                  <p className={`text-sm ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>Engineered for perfect control and handling in any condition</p>
-                </div>
-                <div className={`text-center p-6 rounded-xl border shadow-md ${darkMode ? 'bg-gray-700 border-gray-600' : 'bg-white border-gray-200'}`}>
-                  <div className="mb-3 flex justify-center">
-                    <span className="text-3xl">🌍</span>
-                  </div>
-                  <h4 className={`text-lg font-bold mb-2 ${darkMode ? 'text-white' : 'text-black'}`}>Purity</h4>
-                  <p className={`text-sm ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>Clean, sustainable technology that respects our planet</p>
+                                     <h4 className={`text-lg font-bold mb-2 ${darkMode ? 'text-white' : 'text-black'}`}>{t('home.power')}</h4>
+                   <p className={`text-sm ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>{t('home.powerSubtitle')}</p>
+                 </div>
+                 <div className={`text-center p-6 rounded-xl border shadow-md ${darkMode ? 'bg-gray-700 border-gray-600' : 'bg-white border-gray-200'}`}>
+                   <div className="mb-3 flex justify-center">
+                     <span className="text-3xl">🎯</span>
+                   </div>
+                   <h4 className={`text-lg font-bold mb-2 ${darkMode ? 'text-white' : 'text-black'}`}>{t('home.precision')}</h4>
+                   <p className={`text-sm ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>{t('home.precisionSubtitle')}</p>
+                 </div>
+                 <div className={`text-center p-6 rounded-xl border shadow-md ${darkMode ? 'bg-gray-700 border-gray-600' : 'bg-white border-gray-200'}`}>
+                   <div className="mb-3 flex justify-center">
+                     <span className="text-3xl">🌍</span>
+                   </div>
+                   <h4 className={`text-lg font-bold mb-2 ${darkMode ? 'text-white' : 'text-black'}`}>{t('home.purity')}</h4>
+                   <p className={`text-sm ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>{t('home.puritySubtitle')}</p>
                 </div>
               </div>
             </div>
@@ -109,7 +110,7 @@ export default function Home() {
 
       {/* Why Ryft */}
       <section className={`py-20 px-6 md:px-20 text-center ${darkMode ? 'bg-black text-white' : 'bg-gray-100 text-black'}`}>
-        <h2 className={`text-4xl font-bold mb-12 ${darkMode ? 'text-white' : 'text-black'}`}>Why 'Ryft'?</h2>
+                 <h2 className={`text-4xl font-bold mb-12 ${darkMode ? 'text-white' : 'text-black'}`}>{t('home.whyRyft')}</h2>
         <div className="space-y-12">
           <div className="text-center mb-12">
             <div className="relative inline-block mb-6">
@@ -117,44 +118,42 @@ export default function Home() {
                 <span className={`text-2xl ${darkMode ? 'text-black' : 'text-white'}`}>✨</span>
               </div>
             </div>
-            <h3 className={`text-3xl md:text-4xl font-bold mb-6 ${darkMode ? 'text-white' : 'text-black'}`}>
-              More Than a Name
-            </h3>
+                           <h3 className={`text-3xl md:text-4xl font-bold mb-6 ${darkMode ? 'text-white' : 'text-black'}`}>
+                 {t('home.moreThanName')}
+               </h3>
           </div>
 
           <div className="max-w-5xl mx-auto">
             <div className="grid md:grid-cols-2 gap-8">
               {/* Left Column - Philosophy */}
               <div className={`p-8 rounded-2xl border shadow-2xl ${darkMode ? 'bg-gray-900 border-gray-700' : 'bg-white border-gray-300'}`}>
-                <h4 className={`text-2xl font-bold mb-6 ${darkMode ? 'text-white' : 'text-black'}`}>The Philosophy</h4>
+                                 <h4 className={`text-2xl font-bold mb-6 ${darkMode ? 'text-white' : 'text-black'}`}>{t('home.philosophy')}</h4>
                 <div className="space-y-6">
                   <div className={`p-6 rounded-xl border ${darkMode ? 'bg-gray-800 border-gray-600' : 'bg-gray-100 border-gray-300'}`}>
-                    <h5 className={`text-lg font-semibold mb-3 ${darkMode ? 'text-white' : 'text-black'}`}>The Rift</h5>
-                    <p className={`leading-relaxed ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
-                      The "rift" between gasoline past and electrified future. Where brute strength meets intelligence. 
-                      Where silence speaks power.
-                    </p>
+                                         <h5 className={`text-lg font-semibold mb-3 ${darkMode ? 'text-white' : 'text-black'}`}>{t('home.theRift')}</h5>
+                     <p className={`leading-relaxed ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                       {t('home.riftText')}
+                     </p>
                   </div>
                   
                   <div className={`p-6 rounded-xl border ${darkMode ? 'bg-gray-800 border-gray-600' : 'bg-gray-100 border-gray-300'}`}>
-                    <h5 className={`text-lg font-semibold mb-3 ${darkMode ? 'text-white' : 'text-black'}`}>The Revolution</h5>
-                    <p className={`leading-relaxed ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
-                      We're not just building electric bikes — we're creating a revolution in how people think about 
-                      performance, sustainability, and the future of transportation.
-                    </p>
+                                         <h5 className={`text-lg font-semibold mb-3 ${darkMode ? 'text-white' : 'text-black'}`}>{t('home.theRevolution')}</h5>
+                     <p className={`leading-relaxed ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                       {t('home.revolutionText')}
+                     </p>
                   </div>
                 </div>
               </div>
 
               {/* Right Column - Meaning */}
               <div className={`p-8 rounded-2xl border shadow-2xl ${darkMode ? 'bg-gray-900 border-gray-700' : 'bg-white border-gray-300'}`}>
-                <h4 className={`text-2xl font-bold mb-6 ${darkMode ? 'text-white' : 'text-black'}`}>The Meaning</h4>
+                                 <h4 className={`text-2xl font-bold mb-6 ${darkMode ? 'text-white' : 'text-black'}`}>{t('home.theMeaning')}</h4>
                 <div className="space-y-6">
                   <div className={`p-6 rounded-xl border ${darkMode ? 'bg-gray-800 border-gray-600' : 'bg-gray-100 border-gray-300'}`}>
-                    <h5 className={`text-lg font-semibold mb-3 ${darkMode ? 'text-white' : 'text-black'}`}>R - Revolutionary</h5>
-                    <p className={`leading-relaxed ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
-                      Breaking free from traditional constraints and limitations of combustion technology.
-                    </p>
+                                         <h5 className={`text-lg font-semibold mb-3 ${darkMode ? 'text-white' : 'text-black'}`}>{t('home.revolutionary')}</h5>
+                     <p className={`leading-relaxed ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                       {t('home.revolutionaryText')}
+                     </p>
                   </div>
                   
                   <div className={`p-6 rounded-xl border ${darkMode ? 'bg-gray-800 border-gray-600' : 'bg-gray-100 border-gray-300'}`}>

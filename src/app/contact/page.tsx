@@ -22,7 +22,7 @@ interface ContactMethod {
 }
 
 export default function ContactPage() {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
   const [formData, setFormData] = useState({
     name: '',
     email: '',

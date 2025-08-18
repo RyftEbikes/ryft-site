@@ -60,7 +60,7 @@ interface PreorderForm {
 }
 
 export default function PreorderPage() {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
   const [formData, setFormData] = useState<PreorderForm>({
     firstName: '',
     lastName: '',

@@ -17,7 +17,7 @@ import {
 
 export default function CartPage() {
   const router = useRouter();
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
   const { items: cartItems, removeFromCart, updateQuantity, getTotalPrice } = useCart();
 
   const subtotal = getTotalPrice();

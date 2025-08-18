@@ -44,7 +44,7 @@ interface MenuItem {
 }
 
 export default function MenuPage() {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
   const [activeSection, setActiveSection] = useState('main');
 
   const menuSections: MenuSection[] = [

@@ -11,7 +11,7 @@ A modern, feature-rich e-bike website built with Next.js, React, Tailwind CSS, a
 - **Multi-language Support**: English, Spanish, and French
 - **AI Chatbot**: Google Gemini AI-powered customer support
 - **Admin Dashboard**: View and manage all user data
-- **Responsive Design**: Mobile-first design with dark mode support
+- **Responsive Design**: Mobile-first design with dark mode as default (switchable to light mode)
 
 ## 💾 Data Storage System
 

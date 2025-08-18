@@ -29,7 +29,7 @@ interface TeamMember {
 }
 
 export default function AboutPage() {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
 
   const values: Value[] = [
     {

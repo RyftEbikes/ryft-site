@@ -170,7 +170,7 @@ const ebikes: EbikeSpecs[] = [
 ];
 
 export default function ComparePage() {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
   const [selectedBikes, setSelectedBikes] = useState<string[]>(["Ryft Z"]);
   const [sortBy, setSortBy] = useState<string>("price");
   const [filterCategory, setFilterCategory] = useState<string>("all");

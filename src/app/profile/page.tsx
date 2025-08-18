@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../contexts/LanguageContext';
 import ActionBar from '../components/ActionBar';
 import { userStorage, type UserProfile, type Order } from '../utils/userStorage';
 import { 
@@ -23,12 +24,13 @@ import {
 } from '@heroicons/react/24/outline';
 
 export default function ProfilePage() {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
   const [activeTab, setActiveTab] = useState('profile');
   const [isEditing, setIsEditing] = useState(false);
   const [hasProfile, setHasProfile] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
   const [showCreateAccount, setShowCreateAccount] = useState(false);
+  const { t } = useLanguage();
 
   const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
   const [editForm, setEditForm] = useState({
@@ -125,7 +127,7 @@ export default function ProfilePage() {
         phone: editForm.phone,
         address: editForm.address,
         password: editForm.password,
-        avatar: '/gallery1.jpg',
+    avatar: '/gallery1.jpg',
         memberSince: new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' }),
         totalOrders: 0,
         totalSpent: 0
@@ -192,8 +194,8 @@ export default function ProfilePage() {
   };
 
   const tabs = [
-    { id: 'profile', name: 'Profile', icon: UserIcon },
-    { id: 'orders', name: 'Orders', icon: TruckIcon },
+    { id: 'profile', name: t('profile.title'), icon: UserIcon },
+    { id: 'orders', name: t('profile.orders'), icon: TruckIcon },
     { id: 'wishlist', name: 'Wishlist', icon: HeartIcon },
     { id: 'settings', name: 'Settings', icon: CogIcon },
     { id: 'security', name: 'Security', icon: ShieldCheckIcon }
@@ -207,23 +209,23 @@ export default function ProfilePage() {
         <div className="max-w-6xl mx-auto px-6 py-16">
           <div className="text-center py-12">
             <UserIcon className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">Welcome to Ryft</h3>
-            <p className="text-gray-600 mb-6">Create your account or sign in to get started</p>
+                         <h3 className="text-xl font-semibold text-gray-900 mb-2">{t('profile.welcome')}</h3>
+             <p className="text-gray-600 mb-6">{t('profile.welcomeSubtitle')}</p>
             <div className="flex justify-center space-x-4">
               <button
                 onClick={handleCreateProfile}
                 className="bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-blue-700 transition-colors"
               >
-                Create Account
-              </button>
-              <button
+                                 {t('profile.createAccount')}
+               </button>
+             <button
                 onClick={() => setShowLogin(true)}
                 className="bg-gray-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-gray-700 transition-colors"
               >
-                Sign In
-              </button>
-            </div>
-          </div>
+                {t('profile.signIn')}
+          </button>
+        </div>
+      </div>
         </div>
       </main>
     );
@@ -238,14 +240,14 @@ export default function ProfilePage() {
           <div className="max-w-md mx-auto">
             <div className="text-center mb-8">
               <UserIcon className="w-16 h-16 text-blue-500 mx-auto mb-4" />
-              <h2 className="text-2xl font-bold">Sign In</h2>
-              <p className="text-gray-600">Welcome back! Please sign in to your account.</p>
+                             <h2 className="text-2xl font-bold">{t('profile.signIn')}</h2>
+               <p className="text-gray-600">{t('profile.welcomeBack')}</p>
             </div>
             
             <div className="bg-white rounded-2xl shadow-xl p-8">
               <form onSubmit={(e) => { e.preventDefault(); handleLogin(); }} className="space-y-6">
                 <div>
-                  <label className="block text-sm font-medium mb-2">Email</label>
+                                     <label className="block text-sm font-medium mb-2">{t('profile.email')}</label>
                   <input
                     type="email"
                     required
@@ -254,9 +256,9 @@ export default function ProfilePage() {
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     placeholder="Enter your email"
                   />
-                </div>
+    </div>
                 
-                <div>
+            <div>
                   <label className="block text-sm font-medium mb-2">Password</label>
                   <input
                     type="password"
@@ -266,27 +268,27 @@ export default function ProfilePage() {
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     placeholder="Enter your password"
                   />
-                </div>
+            </div>
                 
-                <button
-                  type="submit"
-                  className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
-                >
-                  Sign In
-                </button>
+                                   <button
+                     type="submit"
+                     className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+                   >
+                     {t('profile.signIn')}
+                   </button>
               </form>
               
               <div className="mt-6 text-center">
-                <button
-                  onClick={() => setShowLogin(false)}
-                  className="text-blue-600 hover:text-blue-700"
-                >
-                  Back to options
-                </button>
-              </div>
-            </div>
+                                 <button
+                   onClick={() => setShowLogin(false)}
+                   className="text-blue-600 hover:text-blue-700"
+                 >
+                   {t('profile.backToOptions')}
+               </button>
           </div>
         </div>
+          </div>
+    </div>
       </main>
     );
   }
@@ -300,76 +302,76 @@ export default function ProfilePage() {
           <div className="max-w-md mx-auto">
             <div className="text-center mb-8">
               <UserIcon className="w-16 h-16 text-green-500 mx-auto mb-4" />
-              <h2 className="text-2xl font-bold">Create Account</h2>
-              <p className="text-gray-600">Join Ryft and start your electric journey!</p>
-            </div>
+                             <h2 className="text-2xl font-bold">{t('profile.createAccount')}</h2>
+               <p className="text-gray-600">{t('profile.joinRyft')}</p>
+    </div>
             
             <div className="bg-white rounded-2xl shadow-xl p-8">
               <form onSubmit={(e) => { e.preventDefault(); handleSaveNewProfile(); }} className="space-y-6">
-                <div>
-                  <label className="block text-sm font-medium mb-2">Full Name *</label>
+            <div>
+                  <label className="block text-sm font-medium mb-2">{t('profile.fullName')} *</label>
                   <input
                     type="text"
                     required
                     value={editForm.name}
                     onChange={(e) => handleInputChange('name', e.target.value)}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="Enter your full name"
+                    placeholder={t('profile.enterFullName')}
                   />
-                </div>
+              </div>
                 
                 <div>
-                  <label className="block text-sm font-medium mb-2">Email *</label>
+                  <label className="block text-sm font-medium mb-2">{t('profile.email')} *</label>
                   <input
                     type="email"
                     required
                     value={editForm.email}
                     onChange={(e) => handleInputChange('email', e.target.value)}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="Enter your email"
+                    placeholder={t('profile.enterEmail')}
                   />
-                </div>
+            </div>
                 
                 <div>
-                  <label className="block text-sm font-medium mb-2">Phone Number</label>
+                  <label className="block text-sm font-medium mb-2">{t('profile.phone')}</label>
                   <input
                     type="tel"
                     value={editForm.phone}
                     onChange={(e) => handleInputChange('phone', e.target.value)}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="Enter your phone number"
+                    placeholder={t('profile.enterPhone')}
                   />
-                </div>
+          </div>
                 
-                <div>
-                  <label className="block text-sm font-medium mb-2">Address</label>
+            <div>
+                  <label className="block text-sm font-medium mb-2">{t('profile.address')}</label>
                   <input
                     type="text"
                     value={editForm.address}
                     onChange={(e) => handleInputChange('address', e.target.value)}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="Enter your address"
+                    placeholder={t('profile.enterAddress')}
                   />
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-medium mb-2">Password *</label>
+      </div>
+
+            <div>
+                  <label className="block text-sm font-medium mb-2">{t('profile.password')} *</label>
                   <input
                     type="password"
                     required
                     value={editForm.password}
                     onChange={(e) => handleInputChange('password', e.target.value)}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="Create a password"
+                    placeholder={t('profile.createPassword')}
                   />
-                </div>
+              </div>
                 
                 <button
                   type="submit"
                   disabled={!editForm.name || !editForm.email || !editForm.password}
                   className="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors disabled:bg-gray-300 disabled:cursor-not-allowed"
                 >
-                  Create Account
+                  {t('profile.createAccount')}
                 </button>
               </form>
               
@@ -378,12 +380,12 @@ export default function ProfilePage() {
                   onClick={() => setShowCreateAccount(false)}
                   className="text-blue-600 hover:text-blue-700"
                 >
-                  Back to options
-                </button>
-              </div>
-            </div>
+                  {t('profile.backToOptions')}
+            </button>
           </div>
         </div>
+      </div>
+    </div>
       </main>
     );
   }
@@ -392,7 +394,7 @@ export default function ProfilePage() {
   return (
     <main className={`min-h-screen ${darkMode ? 'bg-gray-900 text-white' : 'bg-gray-50 text-black'}`}>
       <ActionBar darkMode={darkMode} onDarkModeToggle={setDarkMode} />
-      
+
       <div className="max-w-6xl mx-auto px-6 py-16">
         {/* Header */}
         <motion.div
@@ -406,10 +408,10 @@ export default function ProfilePage() {
             <UserIcon className="w-10 h-10 text-white" />
           </div>
           <h1 className={`text-4xl md:text-5xl font-bold mb-4 ${darkMode ? 'text-white' : 'text-black'}`}>
-            My Profile
+            {t('profile.title')}
           </h1>
           <p className={`text-xl ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-            Manage your account and preferences
+            {t('profile.manage')}
           </p>
         </motion.div>
 
@@ -421,20 +423,20 @@ export default function ProfilePage() {
           className="mb-8"
         >
           <div className="flex border-b border-gray-200 overflow-x-auto">
-            {tabs.map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
+                {tabs.map((tab) => (
+                  <button
+                    key={tab.id}
+                    onClick={() => setActiveTab(tab.id)}
                 className={`flex items-center space-x-2 px-6 py-3 border-b-2 transition-colors whitespace-nowrap ${
-                  activeTab === tab.id
+                      activeTab === tab.id
                     ? 'border-blue-500 text-blue-600'
                     : 'border-transparent text-gray-500 hover:text-gray-700'
-                }`}
-              >
-                <tab.icon className="w-5 h-5" />
+                    }`}
+                  >
+                    <tab.icon className="w-5 h-5" />
                 <span>{tab.name}</span>
-              </button>
-            ))}
+                  </button>
+                ))}
           </div>
         </motion.div>
 
@@ -490,74 +492,74 @@ export default function ProfilePage() {
                     <ArrowRightIcon className="w-4 h-4" />
                     <span>Logout</span>
                   </button>
-                </div>
-              </div>
+            </div>
+          </div>
 
               {/* Contact Information */}
               <div>
-                <h3 className="text-xl font-bold mb-6">Contact Information</h3>
+                <h3 className="text-xl font-bold mb-6">{t('profile.contactInfo')}</h3>
                 
                 {isEditing ? (
                   <div className="space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-sm font-medium mb-2">Full Name *</label>
+                        <label className="block text-sm font-medium mb-2">{t('profile.fullName')} *</label>
                         <input
                           type="text"
                           value={editForm.name}
                           onChange={(e) => handleInputChange('name', e.target.value)}
                           className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                          placeholder="Enter your full name"
+                          placeholder={t('profile.enterFullName')}
                         />
-                      </div>
+          </div>
                       <div>
-                        <label className="block text-sm font-medium mb-2">Email *</label>
+                        <label className="block text-sm font-medium mb-2">{t('profile.email')} *</label>
                         <input
                           type="email"
                           value={editForm.email}
                           onChange={(e) => handleInputChange('email', e.target.value)}
                           className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                          placeholder="Enter your email"
+                          placeholder={t('profile.enterEmail')}
                         />
-                      </div>
-                    </div>
-                    
+        </div>
+      </div>
+
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div>
-                        <label className="block text-sm font-medium mb-2">Phone Number</label>
+            <div>
+                        <label className="block text-sm font-medium mb-2">{t('profile.phone')}</label>
                         <input
                           type="tel"
                           value={editForm.phone}
                           onChange={(e) => handleInputChange('phone', e.target.value)}
                           className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                          placeholder="Enter your phone number"
+                          placeholder={t('profile.enterPhone')}
                         />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-medium mb-2">Address</label>
+            </div>
+            <div>
+                        <label className="block text-sm font-medium mb-2">{t('profile.address')}</label>
                         <input
                           type="text"
                           value={editForm.address}
                           onChange={(e) => handleInputChange('address', e.target.value)}
                           className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                          placeholder="Enter your address"
+                          placeholder={t('profile.enterAddress')}
                         />
                       </div>
                     </div>
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-sm font-medium mb-2">Password</label>
+                        <label className="block text-sm font-medium mb-2">{t('profile.password')}</label>
                         <input
                           type="password"
                           value={editForm.password}
                           onChange={(e) => handleInputChange('password', e.target.value)}
                           className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                          placeholder="Enter new password (leave blank to keep current)"
+                          placeholder={t('profile.newPassword')}
                         />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-medium mb-2">Confirm Password</label>
+            </div>
+            <div>
+                        <label className="block text-sm font-medium mb-2">{t('profile.confirmPassword')}</label>
                         <input
                           type="password"
                           className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -572,13 +574,13 @@ export default function ProfilePage() {
                         disabled={!editForm.name || !editForm.email}
                         className="px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors disabled:bg-gray-300 disabled:cursor-not-allowed"
                       >
-                        Save Changes
+                        {t('profile.saveChanges')}
                       </button>
                       <button
                         onClick={handleCancelEdit}
                         className="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-medium hover:bg-gray-300 transition-colors"
                       >
-                        Cancel
+                        {t('profile.cancel')}
                       </button>
                     </div>
                   </div>
@@ -587,29 +589,29 @@ export default function ProfilePage() {
                     <div className="flex items-center space-x-4">
                       <EnvelopeIcon className="w-5 h-5 text-gray-400" />
                       <div className="flex-1">
-                        <div className="text-sm text-gray-500">Email</div>
-                        <div>{userProfile.email || 'Not set'}</div>
+                                                 <div className="text-sm text-gray-500">{t('profile.email')}</div>
+                         <div>{userProfile.email || t('profile.notSet')}</div>
                       </div>
                     </div>
                     <div className="flex items-center space-x-4">
                       <PhoneIcon className="w-5 h-5 text-gray-400" />
                       <div className="flex-1">
-                        <div className="text-sm text-gray-500">Phone</div>
-                        <div>{userProfile.phone || 'Not set'}</div>
+                                                 <div className="text-sm text-gray-500">{t('profile.phone')}</div>
+                         <div>{userProfile.phone || t('profile.notSet')}</div>
                       </div>
                     </div>
                     <div className="flex items-center space-x-4">
                       <MapPinIcon className="w-5 h-5 text-gray-400" />
                       <div className="flex-1">
-                        <div className="text-sm text-gray-500">Address</div>
-                        <div>{userProfile.address || 'Not set'}</div>
+                                                 <div className="text-sm text-gray-500">{t('profile.address')}</div>
+                         <div>{userProfile.address || t('profile.notSet')}</div>
                       </div>
                     </div>
                     <div className="flex items-center space-x-4">
                       <KeyIcon className="w-5 h-5 text-gray-400" />
                       <div className="flex-1">
-                        <div className="text-sm text-gray-500">Password</div>
-                        <div>{userProfile.password ? '••••••••' : 'Not set'}</div>
+                                                 <div className="text-sm text-gray-500">{t('profile.password')}</div>
+                         <div>{userProfile.password ? t('profile.maskedPassword') : t('profile.notSet')}</div>
                       </div>
                     </div>
                   </div>
@@ -620,18 +622,18 @@ export default function ProfilePage() {
 
           {activeTab === 'orders' && (
             <div>
-              <h3 className="text-xl font-bold mb-6">Recent Orders</h3>
+                             <h3 className="text-xl font-bold mb-6">{t('profile.orders')}</h3>
               {recentOrders.length === 0 ? (
                 <div className="text-center py-8">
                   <TruckIcon className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-                  <h4 className="text-lg font-semibold mb-2">No Orders Yet</h4>
-                  <p className="text-gray-600 mb-4">Start shopping to see your order history here.</p>
-                  <a
-                    href="/configurator"
-                    className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors"
-                  >
-                    Start Shopping
-                  </a>
+                                     <h4 className="text-lg font-semibold mb-2">{t('profile.noOrders')}</h4>
+                   <p className="text-gray-600 mb-4">{t('profile.noOrdersSubtitle')}</p>
+                   <a
+                     href="/configurator"
+                     className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+                   >
+                     {t('profile.startShopping')}
+                   </a>
                 </div>
               ) : (
                 <div className="space-y-4">
@@ -655,41 +657,41 @@ export default function ProfilePage() {
 
           {activeTab === 'wishlist' && (
             <div>
-              <h3 className="text-xl font-bold mb-6">Your Wishlist</h3>
+                             <h3 className="text-xl font-bold mb-6">Wishlist</h3>
               <div className="text-center py-8">
                 <HeartIcon className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-                <h4 className="text-lg font-semibold mb-2">Your Wishlist is Empty</h4>
-                <p className="text-gray-600 mb-4">Start adding products to your wishlist to save them for later.</p>
-                <a
-                  href="/configurator"
-                  className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors"
-                >
-                  Start Shopping
-                </a>
+                                   <h4 className="text-lg font-semibold mb-2">{t('profile.wishlistEmpty')}</h4>
+                   <p className="text-gray-600 mb-4">{t('profile.wishlistSubtitle')}</p>
+                   <a
+                     href="/configurator"
+                     className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+                   >
+                     {t('profile.startShopping')}
+                   </a>
               </div>
             </div>
           )}
 
           {activeTab === 'settings' && (
             <div>
-              <h3 className="text-xl font-bold mb-6">Settings</h3>
-              <div className="text-center py-8">
-                <CogIcon className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-                <h4 className="text-lg font-semibold mb-2">Settings Coming Soon</h4>
-                <p className="text-gray-600">Account preferences and settings will be available here.</p>
-              </div>
-            </div>
+                             <h3 className="text-xl font-bold mb-6">Settings</h3>
+               <div className="text-center py-8">
+                 <CogIcon className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+                 <h4 className="text-lg font-semibold mb-2">{t('profile.settingsComingSoon')}</h4>
+                 <p className="text-gray-600">{t('profile.settingsSubtitle')}</p>
+               </div>
+          </div>
           )}
 
           {activeTab === 'security' && (
             <div>
-              <h3 className="text-xl font-bold mb-6">Security</h3>
-              <div className="text-center py-8">
-                <ShieldCheckIcon className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-                <h4 className="text-lg font-semibold mb-2">Security Features Coming Soon</h4>
-                <p className="text-gray-600">Password management and security settings will be available here.</p>
-              </div>
-            </div>
+                             <h3 className="text-xl font-bold mb-6">Security</h3>
+               <div className="text-center py-8">
+                 <ShieldCheckIcon className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+                 <h4 className="text-lg font-semibold mb-2">{t('profile.securityComingSoon')}</h4>
+                 <p className="text-gray-600">{t('profile.securitySubtitle')}</p>
+               </div>
+        </div>
           )}
         </motion.div>
       </div>
