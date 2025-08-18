@@ -22,7 +22,9 @@ import {
   StarIcon,
   FireIcon,
   SparklesIcon,
-  ChartBarIcon
+  ChartBarIcon,
+  CalendarIcon,
+  EyeIcon
 } from '@heroicons/react/24/outline';
 
 interface MenuSection {
@@ -66,7 +68,14 @@ export default function MenuPage() {
            icon: BoltIcon,
            badge: 'New'
          },
-
+         {
+           id: 'preorder',
+           name: 'Preorder Ryft Z',
+           description: 'Secure your place in the future of electric transportation',
+           href: '/preorder',
+           icon: CalendarIcon,
+           badge: 'Limited Time'
+         },
          {
            id: 'about',
            name: 'About Us',
@@ -88,6 +97,14 @@ export default function MenuPage() {
            description: 'Get in touch with our team',
            href: '/contact',
            icon: PhoneIcon
+         },
+         {
+           id: 'admin',
+           name: 'Admin Dashboard',
+           description: 'View system data and manage users',
+           href: '/admin',
+           icon: EyeIcon,
+           badge: 'Admin'
          }
        ]
      },

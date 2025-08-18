@@ -1,36 +1,184 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ryft E-Bike Website
 
-## Getting Started
+A modern, feature-rich e-bike website built with Next.js, React, Tailwind CSS, and Framer Motion.
 
-First, run the development server:
+## 🚀 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Product Showcase**: Ryft Z electric motorcycle with detailed specifications
+- **Preorder System**: Complete preorder form with billing and payment
+- **User Profiles**: User account management with persistent storage
+- **Shopping Cart**: Global cart system integrated across pages
+- **Multi-language Support**: English, Spanish, and French
+- **AI Chatbot**: Google Gemini AI-powered customer support
+- **Admin Dashboard**: View and manage all user data
+- **Responsive Design**: Mobile-first design with dark mode support
+
+## 💾 Data Storage System
+
+The website includes a comprehensive data storage system that persists user information across sessions:
+
+### Storage Features
+
+- **User Accounts**: Automatic account creation from preorders
+- **Order History**: Track all preorders and purchases
+- **Wishlist**: Save favorite products for later
+- **Persistent Sessions**: Users stay logged in across browser sessions
+- **Data Export**: Admin can export all data as JSON
+- **Local Storage**: Uses browser localStorage for data persistence
+
+### How It Works
+
+1. **Preorder Integration**: When users submit a preorder, an account is automatically created
+2. **Login System**: Users can log in with their email and password
+3. **Data Persistence**: All data is stored in browser localStorage
+4. **Admin Access**: Visit `/admin` to view all stored data
+
+### Storage Structure
+
+```typescript
+// Users
+interface UserProfile {
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  address: string;
+  password: string;
+  avatar: string;
+  memberSince: string;
+  totalOrders: number;
+  totalSpent: number;
+  createdAt: string;
+  updatedAt: string;
+}
+
+// Orders
+interface Order {
+  id: string;
+  userId: string;
+  date: string;
+  status: 'delivered' | 'shipped' | 'processing' | 'cancelled';
+  items: string[];
+  total: number;
+  orderType: 'preorder' | 'purchase';
+  createdAt: string;
+}
+
+// Wishlist
+interface WishlistItem {
+  id: string;
+  userId: string;
+  productId: string;
+  productName: string;
+  productImage: string;
+  price: number;
+  addedAt: string;
+}
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Technical Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Frontend**: Next.js 14, React 18, TypeScript
+- **Styling**: Tailwind CSS with custom glassmorphism effects
+- **Animations**: Framer Motion for smooth interactions
+- **Icons**: Heroicons for consistent iconography
+- **AI Integration**: Google Gemini AI for chatbot functionality
+- **State Management**: React Context API for global state
+- **Data Storage**: LocalStorage-based persistence system
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📁 Project Structure
 
-## Learn More
+```
+src/
+├── app/
+│   ├── components/          # Reusable UI components
+│   ├── contexts/           # Global state management
+│   ├── utils/              # Utility functions and storage
+│   ├── z/                  # Ryft Z product page
+│   ├── preorder/           # Preorder system
+│   ├── profile/            # User profile management
+│   ├── admin/              # Admin dashboard
+│   ├── compare/            # E-bike comparison tool
+│   ├── configurator/       # Product configuration
+│   ├── cart/               # Shopping cart
+│   ├── checkout/           # Checkout process
+│   ├── languages/          # Language selection
+│   ├── about/              # About us page
+│   └── contact/            # Contact information
+```
 
-To learn more about Next.js, take a look at the following resources:
+## 🚀 Getting Started
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **Install Dependencies**
+   ```bash
+   npm install
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2. **Environment Variables**
+   Create a `.env.local` file:
+   ```env
+   NEXT_PUBLIC_GEMINI_API_KEY=your_gemini_api_key_here
+   ```
 
-## Deploy on Vercel
+3. **Run Development Server**
+   ```bash
+   npm run dev
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+4. **Access the Website**
+   - Main site: http://localhost:3000
+   - Admin dashboard: http://localhost:3000/admin
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🔐 Admin Access
+
+The admin dashboard at `/admin` provides:
+
+- **User Management**: View all user accounts and details
+- **Order Tracking**: Monitor all preorders and purchases
+- **Data Export**: Download all data as JSON files
+- **System Management**: Clear all data if needed
+
+**Note**: In production, this should be protected with proper authentication.
+
+## 📱 Key Pages
+
+- **Home** (`/`): Landing page with hero section
+- **Ryft Z** (`/z`): Product showcase and specifications
+- **Preorder** (`/preorder`): Complete preorder system
+- **Profile** (`/profile`): User account management
+- **Admin** (`/admin`): System data management
+- **Compare** (`/compare`): E-bike comparison tool
+- **Configurator** (`/configurator`): Product customization
+- **Cart** (`/cart`): Shopping cart management
+- **Checkout** (`/checkout`): Purchase completion
+
+## 🔄 Data Flow
+
+1. **User submits preorder** → Account automatically created
+2. **User can log in** → Access profile and order history
+3. **Data persists** → Stored in browser localStorage
+4. **Admin can view** → All data accessible via admin dashboard
+5. **Data export** → Download complete dataset as JSON
+
+## 🚧 Future Enhancements
+
+- **Database Integration**: Replace localStorage with real database
+- **User Authentication**: Secure login system with JWT tokens
+- **Payment Processing**: Real payment gateway integration
+- **Email Notifications**: Automated order confirmations
+- **Analytics Dashboard**: User behavior and sales analytics
+- **Multi-language Content**: Translate all page content
+
+## 📄 License
+
+This project is for demonstration purposes. All rights reserved to Ryft.
+
+## 🤝 Support
+
+For questions about your preorder:
+- **Phone**: +1 (704) 349-7066
+- **Email**: support@ryftebikes.com
+
+---
+
+Built with ❤️ for the future of electric transportation.
